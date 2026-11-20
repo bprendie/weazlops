@@ -1,0 +1,30 @@
+name: weazlops-grab-go
+services:
+  app:
+    build: .
+    image: ${WZL_IMAGE:-weazlops-grab-go:dev}
+    network_mode: host
+    command: ["uvicorn", "app.main:configured", "--factory", "--host", "127.0.0.1", "--port", "${WZL_PORT:-5005}", "--no-access-log"]
+    user: "${WZL_UID:-1000}:${WZL_GID:-1000}"
+    environment:
+      WZL_DATA: /data
+      WZL_MASTER_KEY: /private/master.key
+      WZL_WORKER_TOKEN: /private/worker.token
+      WZL_BOOTSTRAP: /private/admin-bootstrap.json
+      WZL_ADAPTER: http://127.0.0.1:${WZL_ADAPTER_PORT:-5015}
+      WZL_ENFORCE_BUILD: "1"
+    volumes:
+      - ./.runtime/data:/data
+      - ./.runtime/private:/private:ro
+    read_only: true
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:${WZL_PORT:-5005}/api/health', timeout=3)"]
+      interval: 30s
+      start_period: 10s
+      start_interval: 1s
+      timeout: 5s
+      retries: 3

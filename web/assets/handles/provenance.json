@@ -1,0 +1,35 @@
+{
+  "authorization": "Owner supplied repository artwork; copied unchanged",
+  "icons": [
+    {
+      "handle": "STONEY",
+      "source": "Stoney, the veteran signal hunter-5.png",
+      "asset": "assets/handles/stoney.png",
+      "sha256": "482aa5db1654f80454e0e99a170c4ae5ec534adb826544944c2e29334ebce6fd"
+    },
+    {
+      "handle": "CRAWL",
+      "source": "crawl.png",
+      "asset": "assets/handles/crawl.png",
+      "sha256": "7b8417c6bf7bb208824af361894760ccc1c934cb86cb3d5f8a9bcf03762ded5c"
+    },
+    {
+      "handle": "LINK",
+      "source": "Link.png",
+      "asset": "assets/handles/link.png",
+      "sha256": "e081755f23c2acc47471a2d8321e62f316c0763ee9c05e40e505f9d88d4b9993"
+    },
+    {
+      "handle": "BETTY",
+      "source": "Betty.png",
+      "asset": "assets/handles/betty.png",
+      "sha256": "3b334bda7c6b483534c359fdbb240baec5bf47564c78e8c4380ed14f23d7e973"
+    },
+    {
+      "handle": "NUGGET",
+      "source": "Nugget.png",
+      "asset": "assets/handles/nugget.png",
+      "sha256": "80e82df17358c2557ec7836773de6faf77e4533b31ecfd4a22e3324ffa060b12"
+    }
+  ]
+}

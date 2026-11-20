@@ -1,0 +1,81 @@
+ONE VISIT V2 — implementation contract, 2026-11-16
+
+Existing WZLTP001 decoding/validation remains unchanged. WZLTP002 retains the
+711-byte bounds, with an explicit new domain WZL TEAM ROSTER V2 including NUL.
+V2 member chip is zero: this asserts a logical role only. The selected hardware's
+real chip/profile is validated separately, never inferred from a future member.
+Certificate WZLROST2 binds public member identities to one team/root and lead.
+
+Package WZLPK002 has: magic8, operation16, physical MAC6, chip1, profile1,
+member ID8 LE, own scalar32 BE, certificate384, roster711, recipient length2 LE,
+RSA3072 DER recipient, recipient signature73, package signature73.
+A signature73 is length1 plus canonical zero-padded DER72. Package signature is
+ECDSA SHA256 over 'WZL ONE VISIT PACKAGE V2'+NUL+SHA256(previous package bytes).
+Recipient uses existing WZL-RECIPIENT-V1+NUL+group8LE+DER.
+Members receive only own private scalar, public peers, authority and public capture
+recipient. App and offline creator escrow identities; signatures are not independent
+hardware attestation. Physical extraction resistance is not established.
+
+One NVS record atomically stores phase1/phase2 plus complete signed package. The
+phase1 record precedes the reissue request; boot reconciles any missing request.
+Existing destructive cleanup uses the same recorded operation. It cannot erase
+this matching pending plan. After boot, identity/certificate are installed, the
+existing replay-reserving peer stores are populated, and the signed recipient and
+v2 directory commit. Phase2 is persisted only after those operations succeed.
+A crash reuses the same package, not newly generated keys with zeroed counters.
+The same installed operation/body is idempotent; different body/same operation
+is a conflict. A different operation cannot reset using the same private identity.
+
+Installed proof WZLPP002 is89 bytes: magic8, package body hash32, challenge32,
+MAC6, chip1, profile1, member8LE, phase1=2. Domain is
+WZL ONE VISIT INSTALLED V2+NUL. Existing signed directory and recipient receipts
+are checked in addition; neither a transport boolean nor USB disappearance is Ready.
+
+Native trusted local USB is a transport adapter for operator-approved reissue.
+A per-device authenticated package must match actual MAC/chip/profile before write.
+The production offline BLE transport enforces Numeric Comparison and complete local
+consent before distributing packages. It does not inherit trusted USB consent.
+No universal fleet key, ambient squad beacon or automatic field check-in is added.
+
+Offline custody envelope WZLOFF03 (lead -> trusted app only): magic8, root
+scalar32, five slot scalars160 (unused zero), membership certificate384,
+v2 logical roster711, publicDER length2 + privateDER length2, publicRSA DER,
+privateRSA DER (or0when an explicitly chosen existing organizer owns it), exact
+canonical recipient signature73 and five slot IDs40 (unused zero). This recipient
+signature is persisted once so all independently rebuilt package body hashes match.
+Private DER and unused scalars stay off Drops. Existing owner-private custody is
+carried forward only when its public recipient matches and it is still held here.
+
+The offline lead encrypts its temporary envelope with AES256-GCM in one of two
+SPIFFS files. An atomic NVS ownership/wrapping record selects a fully written,
+read-back verified file; a failed new-file or NVS write retains the previous usable
+escrow. This is protected local storage, not physical extraction resistance: its
+wrapping key remains in ordinary NVS. No eFuse/security hardware claim is made.
+The setup clock is one atomic WZLGCLK3 record, retains its original remaining lease
+across software reset and fails closed on power loss/regression/corruption.
+Committed offline joins reconnect using the same freshly compared authenticated
+bond and exact transaction. Reboot is not Ready; the creator verifies fresh signed
+physical/configuration receipts before marking that slot Ready.
+
+Trusted import verifies root/scalars/roster/member/certificate/recipient and fresh
+creator receipts, commits encrypted custody durably, reads it back, then sends a
+root-signed cleanup ACK. Lost ACK retries the same custody without rekeying.
+Historical member receipts are labeled past installation, not current presence.
+Only a freshly checked creator can change current fleet assignment during import.
+Device deletion cannot remotely revoke an absent device or promise forensic erase.
+Actual acceptance and remaining RF failures are tracked in the execution ledger.
+
+Fresh offline recovery uses WZLOFF04/P-256 and GDS3 recording envelopes.
+Existing GDS2/RSA recordings remain readable. See GDS3-OFFLINE-RECOVERY.txt
+for exact format, custody and validation limits.
+
+For customized USB teams, install the standard v2 base directory then verify the
+separate team-root-signed WZLCBP01 handout while still on the same cable.
+WZLCBK02 extends WZLCBK01 entries with a little-endian terminal ack_id (u16),
+count (u8) and signed roster handles (u64 member, u8 length, ASCII bytes).
+App handouts use source codes 1–6, alternative replies 7–12 and a terminal ACK
+13. The underlying authenticated Buddy v3 frame carries the signed book digest
+and message ID. Peers must share that digest. Ready requires a fresh signed
+codebook proof for the exact manifest plus readback of allowed Buddy recipients.
+Drop custom names use trusted identity-bound USB readback and are bound to the
+installed directory transaction and member. Only Ghosts need the Buddy envelope.

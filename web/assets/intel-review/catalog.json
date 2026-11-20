@@ -1,0 +1,191 @@
+[
+  {
+    "name": "Axon / body camera",
+    "rules": [
+      "BLE-AXON-BWC-1",
+      "BLE-AXON-COMPANY-1",
+      "BLE-AXON-NAME-1",
+      "BLE-AXON-SVC-1",
+      "BLE-BODYWORN-NAME-1",
+      "WIFI-AXON-COR-1",
+      "WIFI-AXON-FIELD-1",
+      "WIFI-AXON-NAME-1"
+    ]
+  },
+  {
+    "name": "Ring vendor",
+    "rules": [
+      "WIFI-RING-VENDOR-1"
+    ]
+  },
+  {
+    "name": "Apple Find My",
+    "rules": [
+      "BLE-FINDMY-FRAME-1"
+    ]
+  },
+  {
+    "name": "Flock",
+    "rules": [
+      "BLE-FLOCK-NAME-1",
+      "BLE-FLOCK-NAME-COR-1",
+      "BLE-FLOCK-SVC-1",
+      "WIFI-FLOCK-COR-1",
+      "WIFI-FLOCK-HOTSPOT-1",
+      "WIFI-FLOCK-NAME-1",
+      "WIFI-OUI-FS-1"
+    ]
+  },
+  {
+    "name": "Wearable glasses",
+    "rules": [
+      "BLE-LUXOTTICA-COMPANY-1",
+      "BLE-META-COMPANY-1",
+      "BLE-META-COR-1",
+      "BLE-META-EXTRA-SVC-1",
+      "BLE-META-SVC-1",
+      "BLE-SNAP-COMPANY-1",
+      "BLE-SNAP-SVC-1",
+      "BLE-VUZIX-COMPANY-1"
+    ]
+  },
+  {
+    "name": "Tile",
+    "rules": [
+      "BLE-TILE-DATA-1",
+      "BLE-TILE-SVC-1"
+    ]
+  },
+  {
+    "name": "Samsung SmartTag",
+    "rules": [
+      "BLE-SMARTTAG-DATA-1",
+      "BLE-SMARTTAG-SVC-1"
+    ]
+  },
+  {
+    "name": "Chipolo",
+    "rules": [
+      "BLE-CHIPOLO-DATA-1",
+      "BLE-CHIPOLO-SVC-1"
+    ]
+  },
+  {
+    "name": "Find Hub",
+    "rules": [
+      "BLE-FHN-FRAME-1"
+    ]
+  },
+  {
+    "name": "DULT tracker",
+    "rules": [
+      "BLE-DULT-DATA-1",
+      "BLE-DULT-SVC-1"
+    ]
+  },
+  {
+    "name": "Drone Remote ID",
+    "rules": [
+      "RID-MESSAGE-1"
+    ]
+  },
+  {
+    "name": "Flipper",
+    "rules": [
+      "BLE-FLIPPER-NAME-1",
+      "BLE-FLIPPER-SVC-1"
+    ]
+  },
+  {
+    "name": "Serial module",
+    "rules": [
+      "BLE-SERIAL-MODULE-1",
+      "BLE-SKIMMER-HC-NAME-1",
+      "BLE-SPP-HINT-1",
+      "BLE-XUNTONG-COMPANY-1"
+    ]
+  },
+  {
+    "name": "Wi-Fi equipment",
+    "rules": [
+      "WIFI-DEAUTHER-NAME-1",
+      "WIFI-HAK5-ADDRESS-1",
+      "WIFI-PINEAPPLE-NAME-1",
+      "WIFI-PWN-SELF-1"
+    ]
+  },
+  {
+    "name": "Proximity beacon",
+    "rules": [
+      "BLE-EDD-EID-1",
+      "BLE-EDD-TLM-1",
+      "BLE-EDD-UID-1",
+      "BLE-EDD-URL-1",
+      "BLE-IBEACON-1"
+    ]
+  },
+  {
+    "name": "Accessory pairing",
+    "rules": [
+      "BLE-APPLE-PAIR-1",
+      "BLE-FASTPAIR-MODEL-1"
+    ]
+  },
+  {
+    "name": "Home sensor",
+    "rules": [
+      "BLE-BTHOME-ENC-1",
+      "BLE-BTHOME-PLAIN-1"
+    ]
+  },
+  {
+    "name": "Matter",
+    "rules": [
+      "BLE-MATTER-SETUP-1"
+    ]
+  },
+  {
+    "name": "Weazl Bluetooth message",
+    "rules": [
+      "BLE-WEAZL-MSG-1"
+    ]
+  },
+  {
+    "name": "Raven gunshot detector",
+    "rules": [
+      "BLE-RAVEN-SVC-1"
+    ]
+  },
+  {
+    "name": "Wi-Fi disconnects",
+    "rules": [
+      "WIFI-DISCONNECT-BURST-1"
+    ]
+  },
+  {
+    "name": "Security change",
+    "rules": [
+      "BEHAVIOR-SECURITY-CHANGE-1",
+      "WIFI-SECURITY-MISMATCH-1"
+    ]
+  },
+  {
+    "name": "Activity burst",
+    "rules": [
+      "BEHAVIOR-ACTIVITY-BURST-1"
+    ]
+  },
+  {
+    "name": "Watch match",
+    "rules": [
+      "WATCH-ID-1"
+    ]
+  },
+  {
+    "name": "Radio vendor",
+    "rules": [
+      "WIFI-VENDOR-EXT-1",
+      "WIFI-VENDOR-REGISTRY-1"
+    ]
+  }
+]

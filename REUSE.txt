@@ -1,0 +1,10 @@
+Reuse provenance — implementation2026-11-16
+app/serial_transport.py copied from weazlops/tools/usb.py (bounded framing,
+identity-bound serial opening). No old station or all-present enrollment used.
+app/evidence/{trust,policy,setup_wire}.py copied from backend equivalents.
+setup_wire verifier extended explicitly for WZLTP002/domain/chip0; v1 retains
+its strict observed-chip validation. Writer v1 remains a compatibility reference.
+app/evidence/briefings.py retains only original verify_report and helpers.
+app/evidence/storage_v2.py copied verbatim from backend/vendor/storage_v2.py.
+Keep existing source/vendor licensing and THIRD_PARTY_NOTICES in final packaging.
+The new database/lifecycle/UI is independent; no import of live5004 code or data.

@@ -1,0 +1,124 @@
+WEAZLOPS — GUIDED BAG-TO-FIELD WORKFLOW (0.5.0-dev19)
+
+Open http://127.0.0.1:5005 and sign in with your existing account.
+Home shows active teams, assigned member artwork, and connected USB count.
+The team lead wears a blue shield. Prepared/assigned status is a verified
+configuration record, not a live radio-presence claim. Click Prepare a team.
+Fully reassigned teams stay in Teams as previous teams, outside the active count.
+Home is always available in the navigation and after completing a handout.
+
+User accounts
+Sign in as an administrator and open Settings. Under Add a user, choose a
+username, a password of at least 12 characters and a role. Operators can work
+with the shared fleet and evidence. Administrators can also add users. Everyone
+signs in with their own credentials.
+
+Firmware updates
+In Devices, open Firmware options for the connected device and choose a matching
+release. Leave USB connected until that device shows Reboot verified. The receipt
+shows the version and uptime reported by the new boot. On a Ghost with Pocket
+Lock support, it also shows the automatic lock setting at verification. Ghost
+dev47 enables it by default, including on upgrade from dev46. To change it,
+use Settings → Auto Pocket Lock on the Ghost.
+
+1. Plan
+Name the team. Choose counts of Ghosts and Drops (up to five total), codenames,
+and one Ghost lead. Original/XL is detected on the device; no display selector.
+Confirm clearing old local team/settings/recordings on selected devices, then
+Start automatic preparation. This one consent includes cleanup; no separate
+pre-clear or offload is required. Full planned roster and keys are created now.
+
+2. Prepare and hand out — one cable is enough
+Connect the next device. A matching slot is assigned automatically. If desired,
+choose who gets the next matching device before plugging it in. Connect a Drop
+out of order and its matching Drop slot can prepare too. With several cables,
+matching devices are assigned automatically in the displayed order.
+Progress shows real phases: checking, transferring configuration, installing,
+and verifying. The transfer bar measures acknowledged bytes; phases without a
+measurable percentage use an indeterminate bar. Overall progress counts Ready
+members, not time elapsed. No extra Prepare button is required for queued work.
+
+Ready means saved configuration and local service verified. Unplug it, hand it
+out, and connect the next. Earlier devices can leave immediately; there is no
+final synchronization or return visit. A Ready device left connected cannot
+accidentally fill another slot. Reconnect the same bound device to retry an
+interrupted slot. Refresh/login requires Continue before more automatic writes;
+a service restart never silently resumes stale destructive work.
+
+3. Head into the field
+When preparation completes, the wizard presents handout and field instructions.
+Check physical Ghost codenames. Place each Drop and deliberately arm it with one
+short press: four quick amber flashes. Double press disarms: two long flashes.
+A single press while already armed does not replay the arm cue.
+On each Ghost, GHOST DROP -> CHECK-IN -> choose Drop -> SEND requests findings.
+Buddy messages use TEAM -> Send Message and the existing confirmation controls.
+The app's optional checkboxes record YOUR observations; they send no RF traffic.
+Unchecked means unverified, not failure. Preparation can finish before field tests.
+
+Device actions
+Identify and Clear device are visible on connected-device cards. Right-click
+or Shift+F10 opens the same actions; Escape closes the menu. Clearing explicitly
+removes that selected device's local team and recordings after confirmation.
+Unknown, incompatible, unresponsive or explicitly restricted arrivals remain
+visible with an explanation. Only a supported, physically verified device can
+be provisioned. This station retains explicit device exclusions. Product
+inventory is not limited to the last team or previously seen devices.
+
+Delete a team
+Click Delete team on its Home/Teams card or handout screen. One break-glass
+prompt requires the EXACT team name; Keep team/Escape cancels. Successful
+deletion returns Home. The server independently validates the name and refuses
+deletion during active preparation. There is no separate end-team wizard.
+This removes the active app team entry; devices retain their local team until
+reprovisioned. Saved evidence and recovery keys remain available. No remote
+revocation or device wipe is implied. Separate Clear device actions remain
+available on connected hardware when deliberately retiring a device.
+
+Intelligence
+Bring back intelligence from the handoff screen to import saved signed briefings
+and optional supporting recordings. Authorized app login handles app-owned
+recovery keys. Reports are observations, not proof of hostile intent. Human
+conclusions, source evidence and quips remain distinct. No backup/offload gate
+is added to starting the next gig.
+
+Acceptance
+The wizard's one-cable five-device flow is browser/API tested with explicitly
+synthetic USB arrivals, including reload, late arrivals and early handout.
+Real human one-cable/five-device timing remains to be measured; no new 60-second
+physical result is claimed. Firmware Send-default and quick ACK changes are
+explicitly deferred. The earlier laptop-free S3 timing limitation remains deferred.
+Chrome/browser USB is deferred; this deployment uses the local native adapter.
+
+Devices and optional firmware updates
+Open Devices to see each unit's callsign or device number, model, chip and
+running firmware. “Matches library release” means the device reported the version
+of an imported release for that model and chip. If USB identification fails,
+the card labels saved assignment details and the last verified version.
+Use Identify to check which unit you are holding. To install a release, open
+Firmware options, select a release and press Flash firmware. The confirmation
+names the unit, running version and selected release. Keep USB attached through the running-version check.
+The station checks the bootloader identity, flash capacity, and partition table
+before writing the manifest images. A Drop must be idle and disarmed. A different
+partition layout needs a separate migration. An unrecognized or restricted unit
+cannot be flashed here. Ordinary team preparation uses its existing workflow.
+To add a release, open Devices → Firmware library → Add firmware, choose
+a packaged ZIP with ESP32-S3 and ESP32-C5 builds, and select Import release.
+The station checks the manifests, images, and flash layouts before adding it.
+The ZIP stays with the release in the station library. An existing version
+can be imported again if the build matches. A different build needs a new
+version. Import works without USB and leaves flashing as a separate action.
+
+For release packaging from a version directory, tools/import_firmware.py
+adds the release to the station and places a named ZIP in the project Firmware
+directory. The native station uses esptool 5.6.
+
+USB team handouts — app 0.5.0-dev8
+Before starting preparation, choose Edit team handout. Enter up to five unique
+callsigns (1–16 letters, digits, hyphens or underscores), choose Standard or edit
+the 12 Buddy phrases, then Save team handout. Review the names in the plan and
+start automatic preparation. View team handout shows the saved version afterwards.
+Custom phrases can be 1–84 printable ASCII characters. Each Ghost receives the
+same encrypted and signed team book, including Drop display names and a separate
+ACK. Custom plans require Ghost dev41. A custom-named Drop requires Drop dev30;
+Drops receive their own callsign and do not participate in Buddy messaging.
+Older standard plans keep their existing wire format and provisioning workflow.
