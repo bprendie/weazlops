@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 import shutil
 import subprocess
+from tempfile import TemporaryDirectory
 
 BASE = Path(__file__).resolve().parents[1]
 PYTHON = BASE / ".venv/bin/python"
@@ -25,14 +26,20 @@ def main():
     systemd.mkdir(parents=True, exist_ok=True)
     path = systemd / UNIT
     staged = path.with_suffix(".new")
-    staged.write_text(
+    workdir = str(BASE).replace("%", "%%")
+    unit_text = (
         "[Unit]\nDescription=Start WeazlOps and its local USB adapter\n\n"
         "[Service]\nType=oneshot\nRemainAfterExit=yes\nRestart=on-failure\nRestartSec=10\n"
-        f"WorkingDirectory={quote(BASE)}\nEnvironment=WZL_UID={os.getuid()} WZL_GID={os.getgid()}\n"
+        f"WorkingDirectory={workdir}\nEnvironment=WZL_UID={os.getuid()} WZL_GID={os.getgid()}\n"
         f"ExecStart={quote(docker)} compose up --detach --no-build --wait --wait-timeout 60\n"
         f"ExecStart={quote(PYTHON)} tools/start_adapter.py --ensure-running\n\n"
         "[Install]\nWantedBy=default.target\n"
     )
+    with TemporaryDirectory(dir=BASE / ".runtime") as review:
+        candidate = Path(review) / UNIT
+        candidate.write_text(unit_text)
+        subprocess.run(["systemd-analyze", "--user", "verify", str(candidate)], check=True)
+    staged.write_text(unit_text)
     staged.replace(path)
     subprocess.run(["systemctl", "--user", "daemon-reload"], check=True)
     subprocess.run(["systemctl", "--user", "enable", UNIT], check=True)
